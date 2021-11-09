@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='rand.css')}}">
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Welcome to the Great Number Game!</h1>
+        <p>I am thinking of a number between 1 and 10</p>
+        <p>Take a guess!</p>
+        <form action="/guess" method="POST">
+            <input name="guess" type="number">
+            <input type="hidden" name="rand" value={{rand}}>
+            <button type="submit">Guess</button>
+        </form>
+        <div>
+            <p>{{message}}</p>
+        </div>
+        <div>
+            <form action="/restart" method="POST">
+                <button id="restart" type="submit">Restart</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
