@@ -10,7 +10,6 @@ def index():
         return render_template("index.html", message = message)
     else:
         session["rand"] = random.randrange(1, 11)
-        print(session["rand"])
         return render_template("index.html")
 
 @app.route("/restart", methods=["POST"])
@@ -20,7 +19,6 @@ def restart():
 
 @app.route("/guess", methods=["POST"])
 def rand():
-    print(session["rand"])
     session["num_guess"] = int(request.form["guess"])
     if session["num_guess"] == session["rand"]:
         session["message"] = f"You guessed it, the number is {session['rand']}!"
