@@ -9,11 +9,13 @@ html{
 }
 
 h1{
-    font-size:3rem;
+    font-size:6rem;
 }
 
 p{
-    font-size:2rem;
+    font-size:4rem;
+    padding:2rem;
+    margin:0;
 }
 
 form{
@@ -23,12 +25,16 @@ form{
 }
 
 input{
-    margin-bottom:2rem;
-    font-size:2rem;
+    margin-bottom:4rem;
+    margin-top:2rem;
+    font-size:4rem;
+    width:13%;
+    border:.4rem solid black;
+    background-color: rgb(226, 226, 226);
 }
 
 button{
-    font-size:2rem;
+    font-size:4rem;
     background-color: aquamarine;
     padding:.5rem 1rem;
     box-shadow:.1rem .2rem .5rem rgb(177, 176, 176);

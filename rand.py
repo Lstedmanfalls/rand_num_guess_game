@@ -5,12 +5,13 @@ app.secret_key = "ThisIsAsecretKey"
 
 @app.route("/")
 def index():
-    rand = random.randrange(1, 11)
     if "message" in session:
         message = session["message"]
-        return render_template("index.html", message = message, rand = session["rand"])
+        return render_template("index.html", message = message)
     else:
-        return render_template("index.html", rand = rand)
+        session["rand"] = random.randrange(1, 11)
+        print(session["rand"])
+        return render_template("index.html")
 
 @app.route("/restart", methods=["POST"])
 def restart():
@@ -19,14 +20,14 @@ def restart():
 
 @app.route("/guess", methods=["POST"])
 def rand():
-    session["guess"] = request.form["guess"]
-    session["rand"] = request.form["rand"]
-    if session["guess"] == session["rand"]:
-        session["message"] = f"You guessed it correctly, the number is {session['rand']}!"
-    if session["guess"] > session["rand"]:
-        session["message"] = "Too high"
-    if session["guess"] < session["rand"]:
+    print(session["rand"])
+    session["num_guess"] = int(request.form["guess"])
+    if session["num_guess"] == session["rand"]:
+        session["message"] = f"You guessed it, the number is {session['rand']}!"
+    if session["rand"] > session["num_guess"]:
         session["message"] = "Too low"
+    if session["rand"] < session["num_guess"]:
+        session["message"] = "Too high"
     return redirect ("/")
 
 app.run(debug=True)
